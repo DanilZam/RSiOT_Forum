@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Data
 public class Message {
     private int id;
@@ -13,4 +12,11 @@ public class Message {
     private int numberInTopic;
     private int userId;
     private String text;
+
+    public Message(int topicId, int numberInTopic, int userId, String text) {
+        this.topicId = topicId;
+        this.numberInTopic = numberInTopic;
+        this.userId = userId;
+        this.text = text;
+    }
 }

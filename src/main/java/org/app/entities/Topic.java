@@ -6,11 +6,16 @@ import lombok.NoArgsConstructor;
 
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Data
 public class Topic {
     private int id;
     private String title;
     private String creationDate;
     private int messageCount;
+
+    public Topic(String title, String creationDate, int messageCount) {
+        this.title = title;
+        this.creationDate = creationDate;
+        this.messageCount = messageCount;
+    }
 }
