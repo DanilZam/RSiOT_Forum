@@ -1,17 +1,16 @@
 package org.app.repositories;
 
+import ch.qos.logback.core.joran.sanity.Pair;
 import org.app.entities.Message;
 import org.app.entities.Message;
+import org.springframework.boot.json.JsonWriter;
 import org.springframework.stereotype.Repository;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Repository
 public class MessageRepository {
@@ -42,9 +41,9 @@ public class MessageRepository {
     static public Message parseMessage(String line) {
         String[] fields = line.split(";");
         int id = 0;
-        int topicId = 0;
+        AbstractMap.SimpleEntry<String, Integer> topicLink = null;
         int numberInTopic = 0;
-        int userId = 0;
+        AbstractMap.SimpleEntry<String, Integer> userLink = null;
         String text = null;
 
         for (String field : fields) {
@@ -54,13 +53,13 @@ public class MessageRepository {
 
             switch (key) {
                 case "id" -> id = Integer.parseInt(value);
-                case "topicId" -> topicId = Integer.parseInt(value);
+                case "topicLink" -> topicLink = parseLink(value);
                 case "numberInTopic" -> numberInTopic = Integer.parseInt(value);
-                case "userId" -> userId = Integer.parseInt(value);
+                case "userLink" -> userLink = parseLink(value);
                 case "text" -> text = value;
             }
         }
-        Message message = new Message(topicId, numberInTopic, userId, text);
+        Message message = new Message(topicLink, numberInTopic, userLink, text);
         message.setId(id);
         return message;
     }
@@ -69,9 +68,12 @@ public class MessageRepository {
         try (FileWriter writer = new FileWriter(filePath)) {
             for (Message message : messageCache) {
                 String line = String.format(
-                        "id:%d;topicId:%d;numberInTopic:%d;userId:%d;text:%s",
-                        message.getId(), message.getTopicId(), message.getNumberInTopic(),
-                        message.getUserId(), message.getText()
+                        "id:%d;topicLink:(%s,%d);numberInTopic:%d;userLink:(%s,%d);text:%s",
+                        message.getId(),
+                        message.getTopicLink().getKey(), message.getTopicLink().getValue(),
+                        message.getNumberInTopic(),
+                        message.getUserLink().getKey(), message.getUserLink().getValue(),
+                        message.getText()
                 );
                 writer.write(line + System.lineSeparator());
             }
@@ -128,14 +130,36 @@ public class MessageRepository {
     }
 
     public boolean containsForbiddenWords(Message message){
+        System.out.println(message.getText());
         if (message.getText() == null || message.getText().isEmpty()) return false;
 
         String[] words = message.getText().split("\\s+");
         for (String word : words) {
-            if (forbiddenWords.contains(word.toLowerCase())) {
+            System.out.println(word.toLowerCase().replaceAll("[^a-zA-Z]", ""));
+            if (forbiddenWords.contains(word.toLowerCase().replaceAll("[^a-zA-Z]", ""))) {
                 return true;
             }
         }
         return false;
+    }
+
+    static public AbstractMap.SimpleEntry<String, Integer> parseLink(String value){
+        if (value == null || value.isBlank() || !value.startsWith("(") || !value.endsWith(")")) {
+            throw new IllegalArgumentException("Неверный формат строки: " + value);
+        }
+
+        // Убираем скобки и разбиваем по ";"
+        String[] parts = value.substring(1, value.length() - 1).split(",");
+        if (parts.length != 2) {
+            throw new IllegalArgumentException("Ожидался формат (key;value), получено: " + value);
+        }
+
+        try {
+            String key = parts[0].trim();
+            int intValue = Integer.parseInt(parts[1].trim());
+            return new AbstractMap.SimpleEntry<>(key, intValue);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Ошибка преобразования числа из строки: " + value, e);
+        }
     }
 }

@@ -1,22 +1,26 @@
 package org.app.entities;
 
+import ch.qos.logback.core.joran.sanity.Pair;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.AbstractMap;
+import java.util.Map;
 
 @NoArgsConstructor
 @Data
 public class Message {
     private int id;
-    private int topicId;
+    private AbstractMap.SimpleEntry<String, Integer> topicLink;
     private int numberInTopic;
-    private int userId;
+    private AbstractMap.SimpleEntry<String, Integer> userLink;
     private String text;
 
-    public Message(int topicId, int numberInTopic, int userId, String text) {
-        this.topicId = topicId;
+    public Message(AbstractMap.SimpleEntry<String, Integer> topicLink, int numberInTopic, AbstractMap.SimpleEntry<String, Integer> userLink, String text) {
+        this.topicLink = topicLink;
         this.numberInTopic = numberInTopic;
-        this.userId = userId;
+        this.userLink = userLink;
         this.text = text;
     }
 }

@@ -13,6 +13,7 @@ public class User {
     private String registrationDate;
     private int activityRating;
 
+
     public User(String fullName, String nickname, String registrationDate, int activityRating) {
         this.fullName = fullName;
         this.nickname = nickname;
