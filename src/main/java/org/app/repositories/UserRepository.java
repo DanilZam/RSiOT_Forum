@@ -39,6 +39,7 @@ public class UserRepository {
         String nickname = null;
         String registrationDate = null;
         int activityRating = 0;
+        String password = null;
 
         for (String field : fields) {
             String[] keyValue = field.split(":");
@@ -51,9 +52,10 @@ public class UserRepository {
                 case "nickname" -> nickname = value;
                 case "registrationDate" -> registrationDate = value;
                 case "activityRating" -> activityRating = Integer.parseInt(value);
+                case "password" -> password = value;
             }
         }
-        User user = new User(fullName, nickname, registrationDate, activityRating);
+        User user = new User(fullName, nickname, registrationDate, activityRating, password);
         user.setId(id);
         return user;
     }
@@ -62,9 +64,9 @@ public class UserRepository {
         try (FileWriter writer = new FileWriter(filePath)) {
             for (User user : userCache) {
                 String line = String.format(
-                        "id:%d;fullName:%s;nickname:%s;registrationDate:%s;activityRating:%d",
+                        "id:%d;fullName:%s;nickname:%s;registrationDate:%s;activityRating:%d;password:%s",
                         user.getId(), user.getFullName(), user.getNickname(),
-                        user.getRegistrationDate(), user.getActivityRating()
+                        user.getRegistrationDate(), user.getActivityRating(), user.getPassword()
                 );
                 writer.write(line + System.lineSeparator());
             }

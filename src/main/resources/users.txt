@@ -1,3 +1,2 @@
-id:1;fullName:Jonh Doe;nickname:jd111;registrationDate:31.12.2024;activityRating:5
-id:2;fullName:Bob Judas;nickname:bobjs2004;registrationDate:31.12.2024;activityRating:5
-id:3;fullName:Bob Judas1;nickname:bobjs20041;registrationDate:31.12.2024;activityRating:5
+id:1;fullName:Jonh Doe;nickname:jd111;registrationDate:31.12.2024;activityRating:0;password:1111
+id:2;fullName:Bob Judas;nickname:bobjs2004;registrationDate:31.12.2024;activityRating:0;password:bob04

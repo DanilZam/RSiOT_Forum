@@ -1,6 +1,1 @@
 id:1;topicLink:(topics.txt,1);numberInTopic:1;userLink:(users.txt,1);text:test text 1st message
-id:2;topicLink:(topics.txt,2);numberInTopic:1;userLink:(users.txt,2);text:/murder-1
-id:3;topicLink:(topics.txt,2);numberInTopic:1;userLink:(users.txt,2);text:/murder-1
-id:4;topicLink:(topics.txt,2);numberInTopic:1;userLink:(users.txt,2);text:/murder-1
-id:5;topicLink:(topics.txt,2);numberInTopic:1;userLink:(users.txt,2);text:/murder-1
-id:6;topicLink:(topics.txt,2);numberInTopic:1;userLink:(users.txt,2);text:/murder-1

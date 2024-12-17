@@ -36,4 +36,9 @@ public class ForumController {
     public boolean addMessage(){
         return messageService.addMessage(new Message(new AbstractMap.SimpleEntry<>("topics.txt",2),1,new AbstractMap.SimpleEntry<>("users.txt",2),"/murder-1"));
     }
+
+    @GetMapping("/topicm")
+    public List<Message> getAllMessages(){
+        return messageService.getAllMessages();
+    }
 }

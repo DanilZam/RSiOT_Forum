@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32910bc1-2526-40f9-b013-069863cac669" name="Changes" comment="A lot of changes, i wanna sleep">
+    <list default="true" id="32910bc1-2526-40f9-b013-069863cac669" name="Changes" comment="Add links in messages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/app/controllers/ForumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/controllers/ForumController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/entities/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/entities/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/app/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/repositories/MessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/repositories/MessageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/app/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/app/repositories/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/message.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/users.txt" afterDir="false" />
     </list>
@@ -166,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734390348126</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add links in messages">
+      <option name="closed" value="true" />
+      <created>1734451432332</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1734451432332</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -191,6 +196,7 @@
     <MESSAGE value="Made a skeleton of the TopicRepository class" />
     <MESSAGE value="Made a skeleton of the UserRepository class" />
     <MESSAGE value="A lot of changes, i wanna sleep" />
-    <option name="LAST_COMMIT_MESSAGE" value="A lot of changes, i wanna sleep" />
+    <MESSAGE value="Add links in messages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add links in messages" />
   </component>
 </project>
